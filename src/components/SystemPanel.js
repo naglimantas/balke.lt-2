@@ -10,22 +10,22 @@ export default function SystemPanel({ children, style, penalty = false, glow = f
     : colors.border;
 
   const glowShadow = penalty
-    ? { shadowColor: colors.penalty, shadowOpacity: 0.6 }
+    ? { shadowColor: colors.penalty, shadowOpacity: 0.7, elevation: 10, shadowRadius: 14 }
     : glow
-    ? { shadowColor: colors.electricBlue, shadowOpacity: 0.5 }
-    : {};
+    ? { shadowColor: colors.electricBlue, shadowOpacity: 0.6, elevation: 10, shadowRadius: 14 }
+    : { shadowColor: colors.electricBlue, shadowOpacity: 0.12, elevation: 4, shadowRadius: 8 };
 
   return (
     <View
       style={[
         styles.panel,
         { borderColor },
-        glow || penalty ? { ...glowShadow, elevation: 8, shadowRadius: 12, shadowOffset: { width: 0, height: 0 } } : {},
+        glowShadow,
         noPad ? styles.noPad : {},
         style,
       ]}
     >
-      {/* Corner accents */}
+      {/* Corner brackets — larger and sharper for edgy look */}
       <View style={[styles.corner, styles.tl, { borderColor }]} />
       <View style={[styles.corner, styles.tr, { borderColor }]} />
       <View style={[styles.corner, styles.bl, { borderColor }]} />
@@ -39,47 +39,22 @@ const styles = StyleSheet.create({
   panel: {
     backgroundColor: colors.surfaceElevated,
     borderWidth: 1,
-    borderRadius: 2,
+    borderRadius: 1,
     padding: 16,
     position: 'relative',
-    shadowColor: colors.electricBlue,
     shadowOffset: { width: 0, height: 0 },
-    shadowRadius: 8,
-    shadowOpacity: 0.2,
-    elevation: 4,
   },
   noPad: {
     padding: 0,
   },
   corner: {
     position: 'absolute',
-    width: 8,
-    height: 8,
-    borderWidth: 1.5,
-    borderColor: colors.electricBlue,
+    width: 12,
+    height: 12,
+    borderWidth: 2,
   },
-  tl: {
-    top: -1,
-    left: -1,
-    borderRightWidth: 0,
-    borderBottomWidth: 0,
-  },
-  tr: {
-    top: -1,
-    right: -1,
-    borderLeftWidth: 0,
-    borderBottomWidth: 0,
-  },
-  bl: {
-    bottom: -1,
-    left: -1,
-    borderRightWidth: 0,
-    borderTopWidth: 0,
-  },
-  br: {
-    bottom: -1,
-    right: -1,
-    borderLeftWidth: 0,
-    borderTopWidth: 0,
-  },
+  tl: { top: -1, left: -1, borderRightWidth: 0, borderBottomWidth: 0 },
+  tr: { top: -1, right: -1, borderLeftWidth: 0, borderBottomWidth: 0 },
+  bl: { bottom: -1, left: -1, borderRightWidth: 0, borderTopWidth: 0 },
+  br: { bottom: -1, right: -1, borderLeftWidth: 0, borderTopWidth: 0 },
 });
