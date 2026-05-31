@@ -42,12 +42,16 @@ export function getRandomPenaltyMessage() {
 }
 
 export function generatePenaltyQuest(missedQuest) {
+  // If the missed quest was already a penalty, carry it forward at the same
+  // difficulty instead of doubling again (prevents runaway targets / name stacking).
+  const wasPenalty = !!missedQuest.isPenalty;
+  const baseName = String(missedQuest.name || 'Quest').replace(/^\[PENALTY\]\s*/, '');
   return {
     ...missedQuest,
-    id: `penalty_${missedQuest.id}_${Date.now()}`,
-    name: `[PENALTY] ${missedQuest.name}`,
-    target: Math.round(missedQuest.target * PENALTY_MULTIPLIER),
-    xp: Math.round(missedQuest.xp * 1.5),
+    id: `penalty_${missedQuest.templateId || missedQuest.id}_${Date.now()}`,
+    name: `[PENALTY] ${baseName}`,
+    target: wasPenalty ? missedQuest.target : Math.round(missedQuest.target * PENALTY_MULTIPLIER),
+    xp: wasPenalty ? missedQuest.xp : Math.round(missedQuest.xp * 1.5),
     isPenalty: true,
     completed: false,
     progress: 0,

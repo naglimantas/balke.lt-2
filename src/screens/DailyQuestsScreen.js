@@ -22,6 +22,8 @@ import {
   getDailyQuests,
   saveDailyQuests,
   getTodayKey,
+  getYesterdayKey,
+  getLastQuestDateBefore,
 } from '../utils/storage';
 import {
   getRandomQuests,
@@ -44,6 +46,7 @@ export default function DailyQuestsScreen({ navigation }) {
   const [customTarget, setCustomTarget] = useState('');
   const [customUnit, setCustomUnit] = useState('reps');
   const [penaltyMessage] = useState(getRandomPenaltyMessage());
+  const [penaltyCount, setPenaltyCount] = useState(0);
   const [selectedQuest, setSelectedQuest] = useState(null);
   const [editingQuest, setEditingQuest] = useState(null);
   const successAnim = useRef(new Animated.Value(0)).current;
@@ -56,22 +59,50 @@ export default function DailyQuestsScreen({ navigation }) {
 
   async function loadData() {
     const p = await getHunterProfile();
-    setProfile(p);
     const todayKey = getTodayKey();
     let data = await getDailyQuests(todayKey);
+
     if (!data || !data.quests) {
+      // First time opening quests today — generate a fresh set, and carry over
+      // any quests that were left incomplete on the previous quest day as penalties.
       const count = Math.floor(Math.random() * 3) + 3;
       const newQuests = getRandomQuests(count, p?.fitnessLevel);
-      data = { date: todayKey, quests: newQuests, allCompleted: false };
+      const penaltyQuests = await applyMissedQuestPenalties(todayKey, p);
+      data = {
+        date: todayKey,
+        quests: [...penaltyQuests, ...newQuests],
+        allCompleted: false,
+      };
       await saveDailyQuests(data, todayKey);
     }
+
+    setProfile(p ? { ...p } : null);
     setQuests(data.quests || []);
-    setHasPenalty(data.quests?.some(q => q.isPenalty) || false);
+    const penalties = (data.quests || []).filter(q => q.isPenalty);
+    setHasPenalty(penalties.length > 0);
+    setPenaltyCount(penalties.length);
   }
 
-  function getYesterdayKey() {
-    const yesterday = new Date(Date.now() - 86400000);
-    return `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+  // Checks the most recent prior quest day. If quests were left incomplete, the
+  // System breaks the streak and issues harder penalty quests for the missed ones.
+  async function applyMissedQuestPenalties(todayKey, p) {
+    const prevDate = await getLastQuestDateBefore(todayKey);
+    if (!prevDate) return [];
+    const prevData = await getDailyQuests(prevDate);
+    if (!prevData || !prevData.quests || prevData.quests.length === 0) return [];
+
+    const incomplete = prevData.quests.filter(q => !q.completed);
+    if (incomplete.length === 0) return [];
+
+    // A day was missed → the streak is broken.
+    if (p && (p.streak > 0 || p.lastQuestDate)) {
+      p.streak = 0;
+      p.lastQuestDate = null;
+      await saveHunterProfile(p);
+    }
+
+    // Carry forward up to 4 missed quests as penalty missions.
+    return incomplete.slice(0, 4).map(q => generatePenaltyQuest(q));
   }
 
   async function handleToggleQuest(quest) {
@@ -219,8 +250,11 @@ export default function DailyQuestsScreen({ navigation }) {
 
           {hasPenalty && (
             <SystemPanel penalty style={styles.penaltyBanner}>
-              <Text style={styles.penaltyTitle}>⚠ PENALTY QUEST ACTIVE</Text>
+              <Text style={styles.penaltyTitle}>⚠ PENALTY QUEST{penaltyCount !== 1 ? 'S' : ''} ACTIVE</Text>
               <Text style={styles.penaltyMsg}>"{penaltyMessage}"</Text>
+              <Text style={styles.penaltySub}>
+                {penaltyCount} mission{penaltyCount !== 1 ? 's' : ''} carried over from your failure — completed at doubled cost. Your streak has been reset.
+              </Text>
             </SystemPanel>
           )}
 
@@ -363,6 +397,7 @@ const styles = StyleSheet.create({
   penaltyBanner: { marginBottom: 12 },
   penaltyTitle: { fontFamily: 'Rajdhani_700Bold', fontSize: 14, color: colors.penalty, letterSpacing: 2, marginBottom: 6 },
   penaltyMsg: { fontFamily: 'Rajdhani_400Regular', fontSize: 13, color: colors.penalty + 'cc', fontStyle: 'italic', letterSpacing: 0.5 },
+  penaltySub: { fontFamily: 'Rajdhani_500Medium', fontSize: 11, color: colors.textSecondary, letterSpacing: 0.3, marginTop: 8, lineHeight: 16 },
 
   progressPanel: { marginBottom: 16 },
   progressHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },

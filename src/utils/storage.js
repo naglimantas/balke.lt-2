@@ -38,6 +38,27 @@ export function getTodayKey() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
+export function getYesterdayKey() {
+  const d = new Date(Date.now() - 86400000);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+// Finds the most recent prior day that had a quest set saved (YYYY-MM-DD), or null.
+export async function getLastQuestDateBefore(beforeDateKey) {
+  try {
+    const keys = await AsyncStorage.getAllKeys();
+    const prefix = `${KEYS.DAILY_QUESTS}_`;
+    const dates = keys
+      .filter(k => k.startsWith(prefix))
+      .map(k => k.slice(prefix.length))
+      .filter(d => d < beforeDateKey)
+      .sort();
+    return dates.length ? dates[dates.length - 1] : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function getDailyQuests(dateKey) {
   const key = `${KEYS.DAILY_QUESTS}_${dateKey || getTodayKey()}`;
   try {

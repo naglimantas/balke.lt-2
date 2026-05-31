@@ -41,6 +41,7 @@ export default function StatBar({ statName, value = 0, showValue = true, compact
     return (
       <View style={styles.compactRow}>
         <Text style={styles.compactIcon}>{icon}</Text>
+        <Text style={[styles.compactLabel, { color }]} numberOfLines={1}>{label}</Text>
         <View style={styles.compactBar}>
           <Animated.View
             style={[
@@ -124,16 +125,23 @@ const styles = StyleSheet.create({
   compactRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 6,
-    gap: 6,
+    marginBottom: 9,
+    gap: 8,
   },
   compactIcon: {
-    fontSize: 12,
-    width: 18,
+    fontSize: 14,
+    width: 20,
+  },
+  compactLabel: {
+    fontFamily: 'Rajdhani_600SemiBold',
+    fontSize: 11,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    width: 86,
   },
   compactBar: {
     flex: 1,
-    height: 4,
+    height: 6,
     backgroundColor: colors.surface,
     borderRadius: 2,
     overflow: 'hidden',
