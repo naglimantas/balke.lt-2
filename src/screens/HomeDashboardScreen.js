@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
   },
   navItem: {
     width: (width - 48) / 3,
-    borderRadius: 2,
+    borderRadius: 0,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: colors.border,
