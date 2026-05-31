@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.penaltyDark,
     paddingHorizontal: 4,
     paddingVertical: 1,
-    borderRadius: 2,
+    borderRadius: 0,
   },
 
   alertPanel: { borderColor: colors.warning, marginBottom: 6, padding: 10 },

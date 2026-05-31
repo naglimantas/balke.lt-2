@@ -449,18 +449,18 @@ export default function ActiveWorkoutScreen({ navigation, route }) {
 
 // ─── SetCard Styles
 const sc = StyleSheet.create({
-  card: { backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border, borderRadius: 4, padding: 12, marginBottom: 8 },
+  card: { backgroundColor: colors.surfaceElevated, borderWidth: 1, borderColor: colors.border, borderRadius: 0, padding: 12, marginBottom: 8 },
   cardDone: { borderColor: colors.electricBlue + '88', backgroundColor: colors.electricBlue + '0d' },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   label: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, color: colors.textSecondary, letterSpacing: 2 },
   labelDone: { color: colors.electricBlue },
-  check: { width: 28, height: 28, borderRadius: 14, borderWidth: 2, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+  check: { width: 28, height: 28, borderRadius: 0, borderWidth: 2, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
   checkDone: { backgroundColor: colors.electricBlue, borderColor: colors.electricBlue },
   checkMark: { color: colors.textPrimary, fontSize: 14, fontWeight: '700' },
   row: { flexDirection: 'row', gap: 8 },
   col: { flex: 1 },
   colLabel: { fontFamily: 'Rajdhani_500Medium', fontSize: 9, color: colors.textSecondary, letterSpacing: 1.5, marginBottom: 5, textAlign: 'center' },
-  input: { fontFamily: 'Rajdhani_700Bold', fontSize: 22, color: colors.textPrimary, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 3, paddingVertical: 10, textAlign: 'center' },
+  input: { fontFamily: 'Rajdhani_700Bold', fontSize: 22, color: colors.textPrimary, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 0, paddingVertical: 10, textAlign: 'center' },
   inputDone: { borderColor: colors.electricBlue + '55' },
   prev: { fontFamily: 'Rajdhani_400Regular', fontSize: 10, color: colors.neonBlue, marginTop: 8, letterSpacing: 0.3 },
 });
@@ -481,7 +481,7 @@ const s = StyleSheet.create({
   exListRow: { marginBottom: 10, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
   exListName: { fontFamily: 'Rajdhani_500Medium', fontSize: 14, color: colors.textSecondary, letterSpacing: 0.5 },
   exListPrev: { fontFamily: 'Rajdhani_400Regular', fontSize: 11, color: colors.neonBlue, marginTop: 3, paddingLeft: 14 },
-  startBtn: { borderRadius: 2, overflow: 'hidden' },
+  startBtn: { borderRadius: 0, overflow: 'hidden' },
   startGrad: { padding: 18, alignItems: 'center' },
   startText: { fontFamily: 'Rajdhani_700Bold', fontSize: 18, color: colors.textPrimary, letterSpacing: 4 },
 
@@ -492,28 +492,28 @@ const s = StyleSheet.create({
 
   restBanner: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.deepBlue, borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.electricBlue + '55', paddingHorizontal: 16, paddingVertical: 8 },
   restBannerText: { fontFamily: 'Rajdhani_700Bold', fontSize: 16, color: colors.electricBlue, letterSpacing: 2 },
-  skipBtn: { paddingHorizontal: 14, paddingVertical: 6, borderWidth: 1, borderColor: colors.textDim, borderRadius: 2 },
+  skipBtn: { paddingHorizontal: 14, paddingVertical: 6, borderWidth: 1, borderColor: colors.textDim, borderRadius: 0 },
   skipText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 12, color: colors.textSecondary, letterSpacing: 2 },
 
   scroll: { padding: 16, paddingBottom: 32 },
   exHeaderRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 12, gap: 12 },
-  exNumBadge: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.electricBlue + '22', borderWidth: 1, borderColor: colors.electricBlue, alignItems: 'center', justifyContent: 'center', marginTop: 2 },
+  exNumBadge: { width: 32, height: 32, borderRadius: 0, backgroundColor: colors.electricBlue + '22', borderWidth: 1, borderColor: colors.electricBlue, alignItems: 'center', justifyContent: 'center', marginTop: 2 },
   exNumText: { fontFamily: 'Rajdhani_700Bold', fontSize: 14, color: colors.electricBlue },
   exHeaderInfo: { flex: 1 },
   exName: { fontFamily: 'Rajdhani_700Bold', fontSize: 22, color: colors.textPrimary, letterSpacing: 1 },
   exMeta: { fontFamily: 'Rajdhani_500Medium', fontSize: 12, color: colors.textSecondary, letterSpacing: 1, marginTop: 2 },
 
-  cuesPanel: { backgroundColor: colors.penaltyDark, borderWidth: 1, borderColor: colors.penalty + '44', borderRadius: 3, padding: 12, marginBottom: 12 },
+  cuesPanel: { backgroundColor: colors.penaltyDark, borderWidth: 1, borderColor: colors.penalty + '44', borderRadius: 0, padding: 12, marginBottom: 12 },
   cuesLabel: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 10, color: colors.penalty, letterSpacing: 2.5, marginBottom: 6 },
   cuesText: { fontFamily: 'Rajdhani_400Regular', fontSize: 13, color: colors.textSecondary, letterSpacing: 0.3, lineHeight: 20 },
 
   setsLabel: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 10, color: colors.textDim, letterSpacing: 2, marginBottom: 8 },
 
   navRow: { flexDirection: 'row', gap: 10, marginTop: 16 },
-  prevBtn: { paddingHorizontal: 16, paddingVertical: 14, borderWidth: 1, borderColor: colors.border, borderRadius: 2, alignItems: 'center', justifyContent: 'center' },
+  prevBtn: { paddingHorizontal: 16, paddingVertical: 14, borderWidth: 1, borderColor: colors.border, borderRadius: 0, alignItems: 'center', justifyContent: 'center' },
   prevBtnDisabled: { opacity: 0.3 },
   prevBtnText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 13, color: colors.textSecondary, letterSpacing: 1 },
-  nextBtn: { flex: 1, borderRadius: 2, overflow: 'hidden' },
+  nextBtn: { flex: 1, borderRadius: 0, overflow: 'hidden' },
   nextBtnGrad: { padding: 14, alignItems: 'center' },
   nextBtnText: { fontFamily: 'Rajdhani_700Bold', fontSize: 15, color: colors.textPrimary, letterSpacing: 2 },
 
@@ -531,5 +531,5 @@ const s = StyleSheet.create({
   rankUpSub: { fontFamily: 'Rajdhani_400Regular', fontSize: 13, color: colors.textSecondary },
   quoteBox: { paddingHorizontal: 20, marginBottom: 32 },
   quoteText: { fontFamily: 'Rajdhani_400Regular', fontSize: 14, color: colors.textDim, fontStyle: 'italic', textAlign: 'center', letterSpacing: 0.5, lineHeight: 22 },
-  doneBtn: { width: '100%', borderRadius: 2, overflow: 'hidden' },
+  doneBtn: { width: '100%', borderRadius: 0, overflow: 'hidden' },
 });

@@ -185,11 +185,11 @@ const styles = StyleSheet.create({
   screenTag: { fontFamily: 'Rajdhani_500Medium', fontSize: 11, color: colors.electricBlue, letterSpacing: 3, textAlign: 'center', marginBottom: 16 },
 
   filterRow: { marginBottom: 16, flexGrow: 0 },
-  filterBtn: { paddingHorizontal: 14, paddingVertical: 8, borderWidth: 1, borderColor: colors.border, borderRadius: 2, marginRight: 8, backgroundColor: colors.surface },
+  filterBtn: { paddingHorizontal: 14, paddingVertical: 8, borderWidth: 1, borderColor: colors.border, borderRadius: 0, marginRight: 8, backgroundColor: colors.surface },
   filterActive: { borderColor: colors.electricBlue, backgroundColor: colors.electricBlue + '22' },
   filterText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 12, color: colors.textSecondary, letterSpacing: 1 },
 
-  customBtn: { borderRadius: 2, overflow: 'hidden', borderWidth: 1, borderColor: colors.electricBlue, marginBottom: 24 },
+  customBtn: { borderRadius: 0, overflow: 'hidden', borderWidth: 1, borderColor: colors.electricBlue, marginBottom: 24 },
   customBtnGrad: { flexDirection: 'row', alignItems: 'center', padding: 16, gap: 12 },
   customBtnIcon: { fontSize: 24 },
   customBtnTitle: { fontFamily: 'Rajdhani_700Bold', fontSize: 15, color: colors.textPrimary, letterSpacing: 1 },
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
 
   sectionTitle: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, color: colors.textSecondary, letterSpacing: 3, marginBottom: 12 },
 
-  planCard: { marginBottom: 14, borderRadius: 2, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
+  planCard: { marginBottom: 14, borderRadius: 0, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
   planGrad: { padding: 14 },
   planTop: { marginBottom: 10 },
   planTitleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   planDesc: { fontFamily: 'Rajdhani_400Regular', fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
 
   planMeta: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 10 },
-  metaTag: { paddingHorizontal: 8, paddingVertical: 3, borderWidth: 1, borderColor: colors.border, borderRadius: 2 },
+  metaTag: { paddingHorizontal: 8, paddingVertical: 3, borderWidth: 1, borderColor: colors.border, borderRadius: 0 },
   metaTagText: { fontFamily: 'Rajdhani_500Medium', fontSize: 11, color: colors.textSecondary },
 
   exercisePreview: { marginBottom: 12 },

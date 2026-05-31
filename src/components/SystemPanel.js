@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   panel: {
     backgroundColor: colors.surfaceElevated,
     borderWidth: 1,
-    borderRadius: 1,
+    borderRadius: 0,
     padding: 16,
     position: 'relative',
     shadowOffset: { width: 0, height: 0 },

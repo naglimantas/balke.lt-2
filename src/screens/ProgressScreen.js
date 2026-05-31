@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
   tabText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 13, color: colors.textSecondary, letterSpacing: 1.5 },
 
   statSelector: { marginBottom: 12, flexGrow: 0 },
-  statChip: { paddingHorizontal: 14, paddingVertical: 7, borderWidth: 1, borderColor: colors.border, borderRadius: 2, marginRight: 8, backgroundColor: colors.surface },
+  statChip: { paddingHorizontal: 14, paddingVertical: 7, borderWidth: 1, borderColor: colors.border, borderRadius: 0, marginRight: 8, backgroundColor: colors.surface },
   statChipText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, color: colors.textSecondary, letterSpacing: 1 },
 
   chartPanel: { marginBottom: 12, overflow: 'hidden', padding: 12 },
@@ -280,8 +280,8 @@ const styles = StyleSheet.create({
   panelTitle: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, color: colors.textSecondary, letterSpacing: 2.5, marginBottom: 12 },
   statRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 10, gap: 8 },
   statName: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, letterSpacing: 1, width: 80 },
-  statTrack: { flex: 1, height: 5, backgroundColor: colors.surface, borderRadius: 2, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
-  statFill: { height: '100%', borderRadius: 2 },
+  statTrack: { flex: 1, height: 5, backgroundColor: colors.surface, borderRadius: 0, overflow: 'hidden', borderWidth: 1, borderColor: colors.border },
+  statFill: { height: '100%', borderRadius: 0 },
   statVal: { fontFamily: 'Rajdhani_700Bold', fontSize: 14, width: 36, textAlign: 'right' },
 
   historyItem: { borderBottomWidth: 1, borderBottomColor: colors.border },

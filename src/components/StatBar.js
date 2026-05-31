@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 6,
     backgroundColor: colors.surface,
-    borderRadius: 2,
+    borderRadius: 0,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: colors.border,

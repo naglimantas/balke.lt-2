@@ -266,12 +266,12 @@ const styles = StyleSheet.create({
   fieldLabel: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 10, color: colors.textSecondary, letterSpacing: 2.5, marginBottom: 6, marginTop: 8 },
   input: { fontFamily: 'Rajdhani_500Medium', fontSize: 16, color: colors.textPrimary, borderBottomWidth: 1, borderBottomColor: colors.border, paddingVertical: 6, marginBottom: 4 },
 
-  chip: { paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1, borderColor: colors.border, borderRadius: 2, marginRight: 8, backgroundColor: colors.surface },
+  chip: { paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1, borderColor: colors.border, borderRadius: 0, marginRight: 8, backgroundColor: colors.surface },
   chipActive: { borderColor: colors.electricBlue, backgroundColor: colors.electricBlue + '22' },
   chipText: { fontFamily: 'Rajdhani_500Medium', fontSize: 13, color: colors.textSecondary },
 
   rankRow: { flexDirection: 'row', gap: 8, marginBottom: 4 },
-  rankChip: { flex: 1, padding: 10, borderWidth: 1.5, borderRadius: 2, alignItems: 'center' },
+  rankChip: { flex: 1, padding: 10, borderWidth: 1.5, borderRadius: 0, alignItems: 'center' },
   rankChipText: { fontFamily: 'Rajdhani_700Bold', fontSize: 16, letterSpacing: 1 },
 
   exerciseRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: colors.border },
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
   removeBtn: { padding: 6 },
   removeText: { fontFamily: 'Rajdhani_700Bold', fontSize: 14, color: colors.danger },
 
-  addExBtn: { paddingVertical: 12, borderWidth: 1, borderColor: colors.electricBlue, borderStyle: 'dashed', alignItems: 'center', borderRadius: 2, marginTop: 8 },
+  addExBtn: { paddingVertical: 12, borderWidth: 1, borderColor: colors.electricBlue, borderStyle: 'dashed', alignItems: 'center', borderRadius: 0, marginTop: 8 },
   addExText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 14, color: colors.electricBlue, letterSpacing: 2 },
 
   addExForm: { marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: colors.border },
@@ -292,14 +292,14 @@ const styles = StyleSheet.create({
   smallInput: { fontFamily: 'Rajdhani_500Medium', fontSize: 18, color: colors.textPrimary, borderBottomWidth: 1, borderBottomColor: colors.border, paddingVertical: 4, textAlign: 'center' },
 
   addExButtons: { flexDirection: 'row', gap: 10 },
-  cancelBtn: { flex: 1, padding: 10, borderWidth: 1, borderColor: colors.textDim, borderRadius: 2, alignItems: 'center' },
+  cancelBtn: { flex: 1, padding: 10, borderWidth: 1, borderColor: colors.textDim, borderRadius: 0, alignItems: 'center' },
   cancelText: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 13, color: colors.textSecondary, letterSpacing: 1 },
-  confirmBtn: { flex: 2, padding: 10, backgroundColor: colors.electricBlue, borderRadius: 2, alignItems: 'center' },
+  confirmBtn: { flex: 2, padding: 10, backgroundColor: colors.electricBlue, borderRadius: 0, alignItems: 'center' },
   confirmText: { fontFamily: 'Rajdhani_700Bold', fontSize: 13, color: colors.textPrimary, letterSpacing: 1 },
 
-  saveBtn: { padding: 14, borderWidth: 1, borderColor: colors.glowPurple, borderRadius: 2, alignItems: 'center', marginBottom: 10 },
+  saveBtn: { padding: 14, borderWidth: 1, borderColor: colors.glowPurple, borderRadius: 0, alignItems: 'center', marginBottom: 10 },
   saveBtnText: { fontFamily: 'Rajdhani_700Bold', fontSize: 15, color: colors.glowPurple, letterSpacing: 2 },
-  startBtn: { borderRadius: 2, overflow: 'hidden' },
+  startBtn: { borderRadius: 0, overflow: 'hidden' },
   startGrad: { padding: 16, alignItems: 'center' },
   startBtnText: { fontFamily: 'Rajdhani_700Bold', fontSize: 16, color: colors.textPrimary, letterSpacing: 3 },
 });

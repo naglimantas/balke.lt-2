@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 1,
     borderColor: colors.border,
-    borderRadius: 2,
+    borderRadius: 0,
     backgroundColor: colors.surface,
   },
   levelSelected: {
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   createBtn: {
-    borderRadius: 2,
+    borderRadius: 0,
     overflow: 'hidden',
     marginBottom: 20,
   },

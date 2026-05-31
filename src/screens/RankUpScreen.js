@@ -258,13 +258,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 6,
     height: 6,
-    borderRadius: 3,
+    borderRadius: 0,
   },
   glowRing: {
     position: 'absolute',
     width: 160,
     height: 160,
-    borderRadius: 80,
+    borderRadius: 0,
     borderWidth: 2,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 30,
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
   btnWrapper: { width: '100%', maxWidth: 280 },
   continueBtn: {
     borderWidth: 1.5,
-    borderRadius: 2,
+    borderRadius: 0,
     overflow: 'hidden',
   },
   continueGrad: {

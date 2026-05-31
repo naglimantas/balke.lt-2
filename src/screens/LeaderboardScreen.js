@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   panel: { marginBottom: 12 },
   panelTitle: { fontFamily: 'Rajdhani_600SemiBold', fontSize: 11, color: colors.textSecondary, letterSpacing: 2.5, marginBottom: 12 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
-  statBox: { width: '47%', padding: 12, borderWidth: 1, borderColor: colors.border, borderRadius: 2, alignItems: 'center' },
+  statBox: { width: '47%', padding: 12, borderWidth: 1, borderColor: colors.border, borderRadius: 0, alignItems: 'center' },
   statBoxIcon: { fontSize: 18, marginBottom: 4 },
   statBoxValue: { fontFamily: 'Rajdhani_700Bold', fontSize: 22, letterSpacing: 1 },
   statBoxLabel: { fontFamily: 'Rajdhani_500Medium', fontSize: 10, color: colors.textSecondary, letterSpacing: 0.5, marginTop: 2, textAlign: 'center' },

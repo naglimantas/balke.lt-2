@@ -1,59 +1,59 @@
 export const colors = {
-  // Base — near-pure black with cold deep-blue undertone
-  background: '#020208',
-  surface: '#06060f',
-  surfaceElevated: '#0b0b1e',
+  // Base — near-pure black gunmetal
+  background: '#010104',
+  surface: '#030309',
+  surfaceElevated: '#05051a',
 
-  // Brand — Solo Leveling ice-blue accent, deep void purple
-  darkPurple: '#0d0022',
-  electricBlue: '#0099ff',
-  deepBlue: '#000033',
-  glowBlue: '#006bff',
-  glowPurple: '#6600cc',
-  violet: '#4400aa',
-  neonBlue: '#00ccff',
-  iceBlue: '#00ddff',
+  // Brand — ice-blue glow on dark steel
+  darkPurple: '#07001a',
+  electricBlue: '#0094f0',
+  deepBlue: '#00002a',
+  glowBlue: '#004dcc',
+  glowPurple: '#4400aa',
+  violet: '#2a0088',
+  neonBlue: '#00aadd',
+  iceBlue: '#00bbee',
 
   // Text
-  textPrimary: '#e4e8ff',
-  textSecondary: '#7080aa',
-  textDim: '#363655',
-  textAccent: '#88aaff',
+  textPrimary: '#d0daff',
+  textSecondary: '#5c6e8e',
+  textDim: '#28284a',
+  textAccent: '#6688dd',
 
   // Status
-  success: '#00ff88',
-  danger: '#ff0033',
-  warning: '#ffaa00',
-  gold: '#ffcc00',
+  success: '#00e06a',
+  danger: '#e60022',
+  warning: '#f59000',
+  gold: '#f5b500',
 
   // Penalty
-  penalty: '#ff0033',
-  penaltyDark: '#2a000e',
-  penaltyGlow: '#ff003370',
+  penalty: '#e60022',
+  penaltyDark: '#190007',
+  penaltyGlow: '#e6002255',
 
   // Ranks
-  rankE: '#778899',
-  rankD: '#2277ff',
-  rankC: '#22ee88',
-  rankB: '#ff7722',
-  rankA: '#ff2277',
-  rankS: '#ffcc00',
-  rankNational: '#ee22ff',
-  rankMonarch: '#9900ff',
-  rankSovereign: '#ff0055',
+  rankE: '#4e6070',
+  rankD: '#0d4edd',
+  rankC: '#00b855',
+  rankB: '#dd5a00',
+  rankA: '#cc0f66',
+  rankS: '#f5b500',
+  rankNational: '#bb00dd',
+  rankMonarch: '#6600dd',
+  rankSovereign: '#cc003f',
 
   // Stats
-  strength: '#ff3344',
-  agility: '#00ffdd',
-  endurance: '#2299ff',
-  intelligence: '#bb77ff',
-  vitality: '#22ff88',
+  strength: '#cc1a2a',
+  agility: '#00ccaa',
+  endurance: '#0d66dd',
+  intelligence: '#8844dd',
+  vitality: '#00cc55',
 
-  // UI — cold dark borders with sharp glow
-  border: '#14103a',
-  borderGlow: '#0099ff55',
-  borderGlowStrong: '#0099ff',
-  overlay: '#000000dd',
+  // UI — dark steel borders, sharp glow
+  border: '#0e0c2e',
+  borderGlow: '#0094f044',
+  borderGlowStrong: '#0094f0',
+  overlay: '#000000ee',
 
   transparent: 'transparent',
 };

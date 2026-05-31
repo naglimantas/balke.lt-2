@@ -19,10 +19,10 @@ export default function RankBadge({ rank = 'E', size = 'medium', showClass = tru
   const color = rankColors[rank] || rankColors.E;
 
   const sizeStyles = {
-    small: { width: 32, height: 32, borderRadius: 2, borderWidth: 1.5 },
-    medium: { width: 52, height: 52, borderRadius: 3, borderWidth: 2 },
-    large: { width: 80, height: 80, borderRadius: 4, borderWidth: 2.5 },
-    xlarge: { width: 120, height: 120, borderRadius: 6, borderWidth: 3 },
+    small: { width: 32, height: 32, borderRadius: 0, borderWidth: 1.5 },
+    medium: { width: 52, height: 52, borderRadius: 0, borderWidth: 2 },
+    large: { width: 80, height: 80, borderRadius: 0, borderWidth: 2.5 },
+    xlarge: { width: 120, height: 120, borderRadius: 0, borderWidth: 3 },
   };
 
   const textSizes = {
