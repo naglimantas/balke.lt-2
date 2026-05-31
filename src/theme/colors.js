@@ -4,21 +4,21 @@ export const colors = {
   surface: '#030309',
   surfaceElevated: '#05051a',
 
-  // Brand — ice-blue glow on dark steel
-  darkPurple: '#07001a',
-  electricBlue: '#0094f0',
-  deepBlue: '#00002a',
-  glowBlue: '#004dcc',
-  glowPurple: '#4400aa',
-  violet: '#2a0088',
-  neonBlue: '#00aadd',
-  iceBlue: '#00bbee',
+  // Brand — dark purple glow on dark steel
+  darkPurple: '#0e0022',
+  electricBlue: '#7a18d4',
+  deepBlue: '#16002e',
+  glowBlue: '#4a0d99',
+  glowPurple: '#5a00b3',
+  violet: '#3a0099',
+  neonBlue: '#9333dd',
+  iceBlue: '#a64dff',
 
   // Text
-  textPrimary: '#d0daff',
-  textSecondary: '#5c6e8e',
-  textDim: '#28284a',
-  textAccent: '#6688dd',
+  textPrimary: '#ddd0ff',
+  textSecondary: '#6e5c8e',
+  textDim: '#2e284a',
+  textAccent: '#9977dd',
 
   // Status
   success: '#00e06a',
@@ -49,10 +49,10 @@ export const colors = {
   intelligence: '#8844dd',
   vitality: '#00cc55',
 
-  // UI — dark steel borders, sharp glow
-  border: '#0e0c2e',
-  borderGlow: '#0094f044',
-  borderGlowStrong: '#0094f0',
+  // UI — dark steel borders, sharp purple glow
+  border: '#1a0c33',
+  borderGlow: '#7a18d444',
+  borderGlowStrong: '#7a18d4',
   overlay: '#000000ee',
 
   transparent: 'transparent',
