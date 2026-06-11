@@ -24,6 +24,10 @@ import {
   getTodayKey,
   getYesterdayKey,
   getLastQuestDateBefore,
+  getCustomQuestLibrary,
+  addToCustomQuestLibrary,
+  removeFromCustomQuestLibrary,
+  updateCustomQuestInLibrary,
 } from '../utils/storage';
 import {
   getRandomQuests,
@@ -63,14 +67,26 @@ export default function DailyQuestsScreen({ navigation }) {
     let data = await getDailyQuests(todayKey);
 
     if (!data || !data.quests) {
-      // First time opening quests today — generate a fresh set, and carry over
-      // any quests that were left incomplete on the previous quest day as penalties.
-      const count = Math.floor(Math.random() * 3) + 3;
-      const newQuests = getRandomQuests(count, p?.fitnessLevel);
+      // First time opening quests today — generate penalties for yesterday's misses,
+      // load recurring custom quests fresh, then add random system quests.
       const penaltyQuests = await applyMissedQuestPenalties(todayKey, p);
+
+      // Recurring custom quests from the library appear fresh every day.
+      const library = await getCustomQuestLibrary();
+      const customQuests = library.map(q => ({
+        ...q,
+        id: `${q.id}_${todayKey}`,
+        libraryId: q.id,
+        completed: false,
+        progress: 0,
+      }));
+
+      const count = Math.floor(Math.random() * 3) + 3;
+      const systemQuests = getRandomQuests(count, p?.fitnessLevel);
+
       data = {
         date: todayKey,
-        quests: [...penaltyQuests, ...newQuests],
+        quests: [...penaltyQuests, ...customQuests, ...systemQuests],
         allCompleted: false,
       };
       await saveDailyQuests(data, todayKey);
@@ -186,12 +202,16 @@ export default function DailyQuestsScreen({ navigation }) {
     setSelectedQuest(quest);
   }
 
-  function handleDeleteQuest() {
+  async function handleDeleteQuest() {
     const updated = quests.filter(q => q.id !== selectedQuest.id);
     setQuests(updated);
     const todayKey = getTodayKey();
     const allCompleted = updated.length > 0 && updated.every(q => q.completed);
-    saveDailyQuests({ date: todayKey, quests: updated, allCompleted }, todayKey);
+    await saveDailyQuests({ date: todayKey, quests: updated, allCompleted }, todayKey);
+    // Remove from persistent library so it won't recur on future days.
+    if (selectedQuest.libraryId) {
+      await removeFromCustomQuestLibrary(selectedQuest.libraryId);
+    }
     setSelectedQuest(null);
   }
 
@@ -206,27 +226,51 @@ export default function DailyQuestsScreen({ navigation }) {
     setShowAddModal(true);
   }
 
-  function handleAddCustomQuest() {
+  async function handleAddCustomQuest() {
     if (!customName.trim() || !customTarget) return;
     const todayKey = getTodayKey();
+    const edits = {
+      name: customName.trim(),
+      type: customType,
+      statType: customType,
+      target: parseInt(customTarget) || 1,
+      unit: customUnit,
+      icon: TYPE_ICONS[customType] || '⚔️',
+    };
+
     if (editingQuest) {
       const updated = quests.map(q =>
-        q.id === editingQuest.id
-          ? { ...q, name: customName.trim(), type: customType, statType: customType, target: customTarget, unit: customUnit, icon: TYPE_ICONS[customType] || q.icon }
-          : q
+        q.id === editingQuest.id ? { ...q, ...edits } : q
       );
       setQuests(updated);
-      saveDailyQuests({ date: todayKey, quests: updated, allCompleted: updated.every(q => q.completed) }, todayKey);
+      await saveDailyQuests({ date: todayKey, quests: updated, allCompleted: updated.every(q => q.completed) }, todayKey);
+      // Persist the edit so future days reflect the changes.
+      if (editingQuest.libraryId) {
+        await updateCustomQuestInLibrary(editingQuest.libraryId, edits);
+      }
     } else {
-      const quest = createCustomQuest({
-        name: customName.trim(),
-        type: customType,
-        target: customTarget,
-        unit: customUnit,
-      });
-      const updated = [...quests, quest];
+      // Build a stable library entry, then a daily instance pointing back to it.
+      const libraryId = `custom_lib_${Date.now()}`;
+      const libraryEntry = {
+        id: libraryId,
+        libraryId,
+        xp: 50,
+        isPenalty: false,
+        isCustom: true,
+        templateId: null,
+        ...edits,
+      };
+      const todayInstance = {
+        ...libraryEntry,
+        id: `${libraryId}_${todayKey}`,
+        completed: false,
+        progress: 0,
+      };
+      const updated = [...quests, todayInstance];
       setQuests(updated);
-      saveDailyQuests({ date: todayKey, quests: updated, allCompleted: false }, todayKey);
+      await saveDailyQuests({ date: todayKey, quests: updated, allCompleted: false }, todayKey);
+      // Save to library so it recurs every day going forward.
+      await addToCustomQuestLibrary(libraryEntry);
     }
     setShowAddModal(false);
     setEditingQuest(null);

@@ -10,6 +10,7 @@ const KEYS = {
   CUSTOM_WORKOUTS: 'custom_workouts',
   LEADERBOARD: 'leaderboard',
   WEEKLY_STATS: 'weekly_stats',
+  CUSTOM_QUEST_LIBRARY: 'custom_quest_library',
 };
 
 export async function getHunterProfile() {
@@ -192,4 +193,31 @@ export async function updateLeaderboard(category, value, label) {
 
 export async function clearAllData() {
   await AsyncStorage.clear();
+}
+
+// ─── Custom Quest Library (persistent recurring custom quests) ────────────────
+
+export async function getCustomQuestLibrary() {
+  try {
+    const data = await AsyncStorage.getItem(KEYS.CUSTOM_QUEST_LIBRARY);
+    return data ? JSON.parse(data) : [];
+  } catch { return []; }
+}
+
+export async function addToCustomQuestLibrary(quest) {
+  const library = await getCustomQuestLibrary();
+  library.push(quest);
+  await AsyncStorage.setItem(KEYS.CUSTOM_QUEST_LIBRARY, JSON.stringify(library));
+}
+
+export async function removeFromCustomQuestLibrary(libraryId) {
+  const library = await getCustomQuestLibrary();
+  const updated = library.filter(q => q.id !== libraryId);
+  await AsyncStorage.setItem(KEYS.CUSTOM_QUEST_LIBRARY, JSON.stringify(updated));
+}
+
+export async function updateCustomQuestInLibrary(libraryId, updates) {
+  const library = await getCustomQuestLibrary();
+  const updated = library.map(q => q.id === libraryId ? { ...q, ...updates } : q);
+  await AsyncStorage.setItem(KEYS.CUSTOM_QUEST_LIBRARY, JSON.stringify(updated));
 }
